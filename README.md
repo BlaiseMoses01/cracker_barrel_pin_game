@@ -68,7 +68,7 @@ The program outputs a text file for each given configuration with the name of th
 
 * clone the repo using the command: 
 ```
-git clone  https://github.com/BlaiseMoses01/pingame.git
+git clone https://github.com/BlaiseMoses01/cracker_barrel_pin_game.git
 ```
 Alternatively you can download the repo as a zip from the link in the above command, and extract the files locally.
 
