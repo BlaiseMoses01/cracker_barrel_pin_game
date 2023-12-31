@@ -95,5 +95,5 @@ Blaise Moses (blaisemoses2001@gmail.com)
 This project is licensed under the Apache License
 
 ## Acknowledgments
-I would like to acknowledge my Artificial intellience professor Forrest Agostinelli at the Universty  of South Carolina. Though this wasn't for his class his curriculum did peak my interest in search algorithms and game theory style problems. 
+I would like to acknowledge my Artificial Intelligence professor Forrest Agostinelli at the Universty  of South Carolina. Though this wasn't for his class his curriculum did peak my interest in search algorithms and game theory style problems. 
 
