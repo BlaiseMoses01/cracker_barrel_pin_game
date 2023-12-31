@@ -2,7 +2,7 @@ gi
 
 # Pin Game Solver
 
-Ths is an algorithm I designed from scratch to find every possible solution to the puzzle game often found at Cracker Barrel resturaunts
+Ths is an algorithm I designed from scratch to find every possible solution to the puzzle game often found at Cracker Barrel restuarants
 
 ## Game Rules
 ### Setup
@@ -38,15 +38,15 @@ Once the initial board tree is built , the solve method is started with the head
 
 The algorithm then finds all possible winning combinations using the following recursive structure:
 
-Base case 1: Win
+#### Base case 1: Win
 
 In this case, only one pin remains on the board. the trace of moves to reach this state is added to the solutions list, and the function returns
 
-Base case 2: Dead end
+#### Base case 2: Dead end
 
 In this case a losing path has been taken and a dead end is reached, the function can return
 
-Recursive case: 
+#### Recursive case: 
 
 In the recursive case , the board is not in a win state and there are still possible moves. The algorithm finds all of these possible moves, and recursively tests a board with that move made from the current state. 
 
@@ -57,7 +57,7 @@ Mode 1 allows the user to custom enter a size and the initial empty hole, essent
 Mode 2 is automated to find every legal solution to each possible configuration of the traditional 15 peg board
 
 ### Output
-The program outputs a text file for each given configuration with the name of the file being the intial empty space on the gameboard. This file will contain the number of solutions, the time it took to solve the board, and a transcript of the move sequences for each legal solution. 
+The program outputs a text file for each given configuration with the name of the file being the initial empty space on the gameboard. This file will contain the number of solutions, the time it took to solve the board, and a transcript of the move sequences for each legal solution. 
 
 ## Getting Started
 
