@@ -1,6 +1,9 @@
+# Written by Blaise Moses Copyright 2024
+
 import sys
 import time
 
+# Class for Node, each node represents one postion on the game board
 class Node:
     def __init__(self, name, pin,  left=None, right=None , left_sibling=None, right_sibling=None):
         self.name = name
@@ -66,11 +69,11 @@ class Node:
             return True
         return False
 
-
+# method to create a copy of a passed in node 
 def copy(node):
     c = Node(node.get_name(), node.get_pin(), node.get_left(), node.get_right(), node.get_left_sibling(), node.get_right_sibling())
     return c
-
+# builds a game board of the given size, with the initial hole set to the empty parameter
 def build_tree(size, empty, depth, head):
 
     linked = False
@@ -122,7 +125,7 @@ def build_tree(size, empty, depth, head):
     head.set_right(build_tree(size, empty, depth -1 , head.get_right()))
     return head
 
-
+# method to determine how many rows are needed to create the triangular structure for the given size
 def get_rows(size):
     count = 0
     x = 0
@@ -132,7 +135,7 @@ def get_rows(size):
         x += 1
     return x
 
-
+# method for naming each node for its corresponding postion on the game board
 def get_name(name, direction):
     x = int(name[0])
     y = int(name[1])
@@ -143,7 +146,7 @@ def get_name(name, direction):
         ret = str(x+1)+str(y+1)
     return ret
 
-
+#method to determine if a given combination of 3 nodes is an eligible move to be made
 def is_valid_move(a, b, c):
     if a.get_pin() is True and b.get_pin() is False and c.get_pin() is False:
         return str(a.get_name()) + "->" + str(b.get_name()) + "->" + str(c.get_name())
@@ -152,7 +155,7 @@ def is_valid_move(a, b, c):
     else:
         return "invalid"
 
-
+# method to flip the empty status of each of three nodes in a move , effectively making the move
 def flip_pins(head, to_flip):
 
     for i in range(len(to_flip)):
@@ -166,7 +169,7 @@ def flip_pins(head, to_flip):
     if head.has_right():
        flip_pins(head.get_right(), to_flip)
         
-  
+# method for performing a move on the game tree 
 def make_move(head, move):
     
     to_flip = []
@@ -179,7 +182,7 @@ def make_move(head, move):
     flip_pins(head, to_flip)
     return head
 
-
+# method for testing the board to find all possible legal moves
 def get_possible_moves(head, possible_moves):
 
     if head.has_left() and head.get_left().has_left():
@@ -209,7 +212,7 @@ def get_possible_moves(head, possible_moves):
         get_possible_moves(head.get_right(), possible_moves)
     return possible_moves
 
-
+# counts how many pins are left on the board
 def pin_count(head, count, seen):
     if not head.get_pin() and head.get_name() not in seen:
         count += 1
@@ -221,14 +224,14 @@ def pin_count(head, count, seen):
         count += pin_count(head.get_right(), 0, seen)
     return count
 
-
+# determines if a board is a win state
 def is_terminal(head):
     count = pin_count(head, 0, [])
     if count == 1:
         return True
     return False
 
-
+# prints each node in the tree and it's pin status
 def print_tree(head, seen):
     if not head.get_name() in seen:
         print(head.get_name())
@@ -240,7 +243,7 @@ def print_tree(head, seen):
     if head.has_right():
         print_tree(head.get_right(), seen)
 
-        
+# exhaustive search algorithm that recursively tests each possible move combination for a given board   
 def solve(head, trace, solutions):
     if is_terminal(head):
         print("solution found!")
